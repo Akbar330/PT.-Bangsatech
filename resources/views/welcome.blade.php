@@ -33,7 +33,7 @@
 <body>
     <header class="site-header" id="top">
         <a class="brand" href="#top" aria-label="PT Bangsatech Indonesia">
-            PT. <span class="brand-text"><strong>BANGSA</strong>TECH</span>
+            <img src="{{ asset('new_logo.png') }}" alt="PT Bangsatech Indonesia" class="navbar-logo">
         </a>
 
         <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav">
@@ -42,11 +42,11 @@
 
         <nav class="site-nav" id="site-nav">
             <a href="#top">Home</a>
-            <a href="#services">Services</a>
-            <a href="#company">Company</a>
-            <a href="#customers">Community</a>
-            <a href="#testimonials">Blog</a>
-            <a href="#contact">Help</a>
+            <a href="#company">Tentang</a>
+            <a href="#services">Layanan</a>
+            <a href="#customers">Pelanggan</a>
+            <a href="#testimonials">Testimoni</a>
+            <a href="#contact">Hubungi Kami</a>
         </nav>
     </header>
 
@@ -149,7 +149,8 @@
                 <h2>Pelanggan kami</h2>
                 <div class="customer-marquee" aria-label="Daftar pelanggan">
                     <div class="customer-track">
-                        @foreach ($customers->concat($customers) as $customer)
+                        @php $loopCustomers = $customers->concat($customers)->concat($customers)->concat($customers); @endphp
+                        @foreach ($loopCustomers as $customer)
                             <div class="customer-logo" title="{{ $customer->name }}">
                                 @if ($customer->logo)
                                     <img src="{{ asset('storage/'.$customer->logo) }}" alt="{{ $customer->name }}">
